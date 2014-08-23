@@ -12,8 +12,8 @@ class Player extends FlxSprite
 
 		makeGraphic(7,7, FlxColoer.WHITE);
 
-		maxVelocity.x = 100;
-		maxVelocity.y = 100;
+		maxVelocity.x = 120;
+		maxVelocity.y = 120;
 		facing = FlxObject.RIGHT;
 		drag.x = 100;
 		drag.y = 100;
