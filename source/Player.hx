@@ -8,6 +8,8 @@ class Player extends FlxSprite
 	//Player's Constructor
 	override public function new():Void
 	{  
+		super();
+
 
 		this.makeGraphic(20,20, FlxColor.WHITE);
 
@@ -20,12 +22,13 @@ class Player extends FlxSprite
 		this.drag.x = 100;
 		this.drag.y = 100;
 
-		super();
+		
 	}
 
 	override public function update():Void
 	{
 		this.acceleration.x = 0;
+		this.acceleration.y = 0;
 
 		if (FlxG.keys.pressed.LEFT)
 		{
@@ -37,7 +40,7 @@ class Player extends FlxSprite
 			this.acceleration.x = this.maxVelocity.x * 8;
 			this.facing = FlxObject.RIGHT;
 		}
-		if (FlxG.keys.justPressed.UP)
+		if (FlxG.keys.pressed.UP)
 		{
 			this.acceleration.y = -this.maxVelocity.y * 8;
 			this.facing = FlxObject.UP;
