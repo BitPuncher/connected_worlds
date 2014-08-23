@@ -12,11 +12,18 @@ import flixel.util.FlxMath;
  */
 class PlayState extends FlxState
 {
+	private var player:FlxSprite = new Player();
+
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
 	override public function create():Void
 	{
+		add(player);
+
+		player.x = 100;
+		player.y = 100;
+
 		super.create();
 	}
 	
@@ -34,6 +41,8 @@ class PlayState extends FlxState
 	 */
 	override public function update():Void
 	{
+		player.update();
+
 		super.update();
 	}	
 }

@@ -1,22 +1,26 @@
 package; 
 
 import flixel.*;
+import flixel.util.*;
 
 class Player extends FlxSprite
 {
 	//Player's Constructor
-	public function Player(X:Number, Y:Number):void
+	override public function new():Void
 	{  
 
-		super(X,Y);
+		makeGraphic(20,20, FlxColor.WHITE);
 
-		makeGraphic(7,7, FlxColoer.WHITE);
+		//x = X;
+		//y = Y;
 
 		maxVelocity.x = 120;
 		maxVelocity.y = 120;
 		facing = FlxObject.RIGHT;
 		drag.x = 100;
 		drag.y = 100;
+
+		super();
 	}
 
 	override public function update():Void
@@ -57,12 +61,5 @@ class Player extends FlxSprite
 	{
 		super.kill();
 	}
-
-
-
-
-
-
-
 
 }
