@@ -9,43 +9,43 @@ class Player extends FlxSprite
 	override public function new():Void
 	{  
 
-		makeGraphic(20,20, FlxColor.WHITE);
+		this.makeGraphic(20,20, FlxColor.WHITE);
 
 		//x = X;
 		//y = Y;
 
-		maxVelocity.x = 120;
-		maxVelocity.y = 120;
-		facing = FlxObject.RIGHT;
-		drag.x = 100;
-		drag.y = 100;
+		this.maxVelocity.x = 120;
+		this.maxVelocity.y = 120;
+		this.facing = FlxObject.RIGHT;
+		this.drag.x = 100;
+		this.drag.y = 100;
 
 		super();
 	}
 
 	override public function update():Void
 	{
-		acceleration.x = 0;
+		this.acceleration.x = 0;
 
 		if (FlxG.keys.pressed.LEFT)
 		{
-			acceleration.x = -maxVelocity.x * 8;
-			facing = FlxObject.LEFT;
+			this.acceleration.x = -this.maxVelocity.x * 8;
+			this.facing = FlxObject.LEFT;
 		}
 		if (FlxG.keys.pressed.RIGHT)
 		{
-			acceleration.x = maxVelocity.x * 8;
-			facing = FlxObject.RIGHT;
+			this.acceleration.x = this.maxVelocity.x * 8;
+			this.facing = FlxObject.RIGHT;
 		}
 		if (FlxG.keys.justPressed.UP)
 		{
-			velocity.y = -maxVelocity.y * 8;
-			facing = FlxObject.UP;
+			this.velocity.y = -this.maxVelocity.y * 8;
+			this.facing = FlxObject.UP;
 		}
 		if (FlxG.keys.pressed.DOWN)
 		{
-			velocity.y = maxVelocity.y * 8;
-			facing = FlxObject.DOWN;
+			this.velocity.y = this.maxVelocity.y * 8;
+			this.facing = FlxObject.DOWN;
 		}
 
 		super.update();
