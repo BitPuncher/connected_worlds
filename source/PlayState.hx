@@ -20,7 +20,7 @@ class PlayState extends FlxState
 	override public function create():Void
 	{
 		player = new Player();
-		
+
 		player.x = 10;
 		player.y = 10;
 
@@ -43,8 +43,6 @@ class PlayState extends FlxState
 	 */
 	override public function update():Void
 	{
-		player.update();
-
 		super.update();
 	}	
 }

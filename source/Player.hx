@@ -39,12 +39,12 @@ class Player extends FlxSprite
 		}
 		if (FlxG.keys.justPressed.UP)
 		{
-			this.velocity.y = -this.maxVelocity.y * 8;
+			this.acceleration.y = -this.maxVelocity.y * 8;
 			this.facing = FlxObject.UP;
 		}
 		if (FlxG.keys.pressed.DOWN)
 		{
-			this.velocity.y = this.maxVelocity.y * 8;
+			this.acceleration.y = this.maxVelocity.y * 8;
 			this.facing = FlxObject.DOWN;
 		}
 
