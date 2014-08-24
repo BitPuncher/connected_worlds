@@ -33,6 +33,7 @@
 		<!-- images -->
 		<image path="images/stage-sprite.png" id="stage-sprite" />
 		<image path="images/sheep.png" id="sheep-sprite" />
+		<image path="images/player-down-animated.png" id="player-down-animated" />
 	</assets>
 	
 	<!--------------------------------LIBRARIES------------------------------------->

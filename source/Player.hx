@@ -15,7 +15,7 @@ class Player extends FlxSprite
 		super();
 
 
-		this.makeGraphic(10,10, FlxColor.WHITE);
+		this.loadRotatedGraphic('player-down-animated', true, 10, 10);
 
 		//x = X;
 		//y = Y;
