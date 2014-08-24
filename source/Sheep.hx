@@ -23,6 +23,8 @@ class Sheep extends Enemy {
 		this.maxVelocity.x = walkSpeed;
 		this.maxVelocity.y = walkSpeed;
 
+		moveTimer = new FlxTimer();
+
 		// this.loadGraphic('sheep-sprite');
 		this.loadRotatedGraphic('sheep-sprite', 4);
 	}
@@ -43,7 +45,7 @@ class Sheep extends Enemy {
 		this.velocity.x = 0;
 		this.velocity.y = 0;
 
-		moveTimer = new FlxTimer(1, endMove, 1);
+		moveTimer.start(1, endMove, 1);
 
 		direction = FlxRandom.intRanged(0, 3);
 
@@ -80,8 +82,6 @@ class Sheep extends Enemy {
 		this.acceleration.y = 0;
 		this.velocity.x = 0;
 		this.velocity.y = 0;
-
-		moveTimer.cancel();
 
 	}
 }

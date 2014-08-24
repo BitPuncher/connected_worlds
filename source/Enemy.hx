@@ -15,7 +15,7 @@ class Enemy extends FlxSprite
 		this.x = xPos;
 		this.y = yPos;
 
-		time = 1;
+		time = 2;
 		walkSpeed = 60;
 
 		this.maxVelocity.x = walkSpeed;
