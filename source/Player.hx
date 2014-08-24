@@ -16,7 +16,7 @@ class Player extends FlxSprite
 	{  
 		super();
 
-		this.loadGraphic('player-down-animated', true, 10, 10);
+		this.loadGraphic(AssetPaths.player_side_animated__png, true, 10, 10);
 		animation.add("glowing", [0,1,2,3,4], 3);
 		animation.play("glowing");
 
@@ -100,11 +100,12 @@ class Player extends FlxSprite
 
 	private function changeSprite(facing:Int):Void {
 		switch(facing) {
-			case FlxObject.DOWN: loadGraphic(AssetPaths.player_down_animated__png);
-			case FlxObject.UP: loadGraphic(AssetPaths.player_up_animated__png);
-			case FlxObject.LEFT: loadGraphic(AssetPaths.player_side_animated__png); flipX = true;
-			case FlxObject.RIGHT: loadGraphic(AssetPaths.player_side_animated__png); flipX = false;
+			case FlxObject.DOWN: loadGraphic(AssetPaths.player_down_animated__png, true, 10, 10);
+			case FlxObject.UP: loadGraphic(AssetPaths.player_up_animated__png, true, 10, 10);
+			case FlxObject.LEFT: loadGraphic(AssetPaths.player_side_animated__png, true, 10, 10); flipX = true;
+			case FlxObject.RIGHT: loadGraphic(AssetPaths.player_side_animated__png, true, 10, 10); flipX = false;
 		}
+		animation.play("glowing");
 	}
 
 }
