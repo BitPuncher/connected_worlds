@@ -2,12 +2,20 @@ package;
 
 import flixel.*;
 import flixel.util.*;
+<<<<<<< HEAD
 import flixel.addons.weapon.*;
 
 class Player extends FlxSprite
 {
 	public var weapon:FlxWeapon;
 	private var facingConversion:Map<Int, Int>;
+=======
+import flixel.addons.weapon.FlxWeapon;
+
+class Player extends FlxSprite
+{
+	private var weapon:FlxWeapon;
+>>>>>>> fb43de53ea08cabaa9875dfffc0a76cb6b64d533
 
 	//Player's Constructor
 	override public function new():Void
@@ -26,6 +34,7 @@ class Player extends FlxSprite
 		this.drag.x = 100;
 		this.drag.y = 100;
 
+<<<<<<< HEAD
 		weapon = new FlxWeapon("Gun", this);
 
 		weapon.makePixelBullet(10);
@@ -38,6 +47,10 @@ class Player extends FlxSprite
 		facingConversion.set(FlxObject.RIGHT, FlxWeapon.BULLET_RIGHT);
 		facingConversion.set(FlxObject.LEFT, FlxWeapon.BULLET_LEFT);
 		facingConversion.set(FlxObject.UP, FlxWeapon.BULLET_UP);
+=======
+		weapon = new FlxWeapon("Gun");
+
+>>>>>>> fb43de53ea08cabaa9875dfffc0a76cb6b64d533
 		
 	}
 
