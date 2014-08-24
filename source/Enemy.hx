@@ -17,6 +17,7 @@ class Enemy extends FlxSprite
 
 		time = 2;
 		walkSpeed = 60;
+		this.health = 100;
 
 		this.maxVelocity.x = walkSpeed;
 		this.maxVelocity.y = walkSpeed;

@@ -87,5 +87,6 @@ class PlayState extends FlxState
 	private function enemyHit(bullet:FlxObject, object:Enemy):Void
 	{
 		bullet.kill();
-		object.destroy();	}
+		object.hurt(20);	
+	}
 }
