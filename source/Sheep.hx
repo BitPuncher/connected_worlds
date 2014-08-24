@@ -45,7 +45,7 @@ class Sheep extends Enemy {
 		this.velocity.x = 0;
 		this.velocity.y = 0;
 
-		moveTimer.start(1, endMove, 1);
+		moveTimer.start(FlxRandom.floatRanged(1, 3), endMove, 1);
 
 		direction = FlxRandom.intRanged(0, 3);
 
@@ -74,7 +74,7 @@ class Sheep extends Enemy {
 			this.angle = 90;
 		}
 
-		this.behaviorTimer.start(FlxRandom.intRanged(2, 4), behavior, 1);
+		
 
 	}
 
@@ -85,5 +85,6 @@ class Sheep extends Enemy {
 		this.velocity.x = 0;
 		this.velocity.y = 0;
 
+		this.behaviorTimer.start(FlxRandom.floatRanged(2, 4), behavior, 1);
 	}
 }
