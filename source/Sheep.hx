@@ -50,21 +50,25 @@ class Sheep extends Enemy {
 		{
 			this.acceleration.y = -this.maxVelocity.y * 8;
 			this.facing = FlxObject.UP;
+			this.angle = 180;
 		}
 		if (direction == 1)
 		{
 			this.acceleration.x = this.maxVelocity.x * 8;
 			this.facing = FlxObject.RIGHT;
+			this.angle = 270;
 		}
 		if (direction == 2)
 		{
 			this.acceleration.y = this.maxVelocity.y * 8;
 			this.facing = FlxObject.DOWN;
+			this.angle = 0;
 		}
 		if (direction == 3)
 		{
 			this.acceleration.x = -this.maxVelocity.x * 8;
 			this.facing = FlxObject.LEFT;
+			this.angle = 90;
 		}
 
 	}
