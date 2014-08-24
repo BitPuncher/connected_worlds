@@ -68,6 +68,7 @@ class PlayState extends FlxState
 
 	  // Collisions
 	  FlxG.collide(level, player);
+	  FlxG.collide(level, enemyGroup);
 	  FlxG.collide(player.weapon.group, level, killBullet);
 
 		super.update();

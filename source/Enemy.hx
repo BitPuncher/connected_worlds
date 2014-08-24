@@ -7,13 +7,21 @@ class Enemy extends FlxSprite
 {
 	private var behaviorTimer:FlxTimer;
 	private var time:Int;
+	private var walkSpeed:Int;
 
-	override public function new():Void {
+	override public function new(xPos:Int, yPos:Int):Void {
 		super();
 
-		time = 10;
+		this.x = xPos;
+		this.y = yPos;
 
-		behaviorTimer = new FlxTimer(time, behavior, 0)
+		time = 1;
+		walkSpeed = 60;
+
+		this.maxVelocity.x = walkSpeed;
+		this.maxVelocity.y = walkSpeed;
+
+		behaviorTimer = new FlxTimer(time, behavior, 0);
 	}
 
 	override public function update():Void {
@@ -26,6 +34,6 @@ class Enemy extends FlxSprite
 
 	public function behavior(timer:FlxTimer):Void
 	{
-		
+
 	}
 }
