@@ -7,6 +7,7 @@ import flixel.FlxObject;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
+import flixel.group.FlxGroup;
 
 /**
  * A FlxState which can be used for the actual gameplay.
@@ -15,6 +16,7 @@ class PlayState extends FlxState
 {
 	private var player:Player;
 	private var level:Level;
+	private var enemyGroup:FlxGroup;
 
 	/**
 	 * Function that is called up when to state is created to set it up. 
@@ -33,6 +35,11 @@ class PlayState extends FlxState
 
 		player.x = 40;
 		player.y = 40;
+
+
+		// enemies init
+		enemyGroup = new FlxGroup();
+		enemyGroup.add(new Sheep());
 
 		// adding things
 		add(level);
