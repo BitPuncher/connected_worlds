@@ -23,7 +23,8 @@ class Sheep extends Enemy {
 		this.maxVelocity.x = walkSpeed;
 		this.maxVelocity.y = walkSpeed;
 
-		this.loadGraphic('sheep-sprite');
+		// this.loadGraphic('sheep-sprite');
+		this.loadRotatedGraphic('sheep-sprite', 4);
 	}
 
 	override public function update():Void {
