@@ -74,6 +74,7 @@ class PlayState extends FlxState
 	  FlxG.collide(level, player);
 	  FlxG.collide(level, enemyGroup);
 	  FlxG.collide(player.weapon.group, level, killBullet);
+	  FlxG.collide(player.weapon.group, enemyGroup, enemyHit);
 
 		super.update();
 	}
@@ -82,4 +83,9 @@ class PlayState extends FlxState
 	{
 		bullet.kill();
 	}	
+
+	private function enemyHit(bullet:FlxObject, object:Enemy):Void
+	{
+		bullet.kill();
+		object.destroy();	}
 }
