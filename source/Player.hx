@@ -2,16 +2,19 @@ package;
 
 import flixel.*;
 import flixel.util.*;
+import flixel.addons.weapon.FlxWeapon;
 
 class Player extends FlxSprite
 {
+	private var weapon:FlxWeapon;
+
 	//Player's Constructor
 	override public function new():Void
 	{  
 		super();
 
 
-		this.makeGraphic(20,20, FlxColor.WHITE);
+		this.makeGraphic(10,10, FlxColor.WHITE);
 
 		//x = X;
 		//y = Y;
@@ -21,6 +24,8 @@ class Player extends FlxSprite
 		this.facing = FlxObject.RIGHT;
 		this.drag.x = 100;
 		this.drag.y = 100;
+
+		weapon = new FlxWeapon("Gun");
 
 		
 	}
