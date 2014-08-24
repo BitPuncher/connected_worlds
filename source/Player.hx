@@ -21,8 +21,8 @@ class Player extends FlxSprite
 		animation.add("side", [5,6,7,8,9], 3);
 		animation.add("up", [10,11,12,13,14], 3);
 
-		this.maxVelocity.x = 70;
-		this.maxVelocity.y = 70;
+		this.maxVelocity.x = 50;
+		this.maxVelocity.y = 50;
 		this.facing = FlxObject.RIGHT;
 		this.drag.x = 100;
 		this.drag.y = 100;
@@ -70,25 +70,25 @@ class Player extends FlxSprite
 	private function inputControl():Void {
 		if (FlxG.keys.pressed.LEFT)
 		{
-			this.acceleration.x = -this.maxVelocity.x * 8;
+			this.acceleration.x = -this.maxVelocity.x * 4;
 			previousFacing = this.facing;
 			this.facing = FlxObject.LEFT;
 		}
 		if (FlxG.keys.pressed.RIGHT)
 		{
-			this.acceleration.x = this.maxVelocity.x * 8;
+			this.acceleration.x = this.maxVelocity.x * 4;
 			previousFacing = this.facing;
 			this.facing = FlxObject.RIGHT;
 		}
 		if (FlxG.keys.pressed.UP)
 		{
-			this.acceleration.y = -this.maxVelocity.y * 8;
+			this.acceleration.y = -this.maxVelocity.y * 4;
 			previousFacing = this.facing;
 			this.facing = FlxObject.UP;
 		}
 		if (FlxG.keys.pressed.DOWN)
 		{
-			this.acceleration.y = this.maxVelocity.y * 8;
+			this.acceleration.y = this.maxVelocity.y * 4;
 			previousFacing = this.facing;
 			this.facing = FlxObject.DOWN;
 		}
