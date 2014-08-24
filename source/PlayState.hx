@@ -8,6 +8,7 @@ import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
 import flixel.group.FlxGroup;
+import enemies.Sheep;
 
 /**
  * A FlxState which can be used for the actual gameplay.

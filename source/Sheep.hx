@@ -6,7 +6,7 @@ class Sheep extends Enemy {
 	override public function new():Void {
 		super();
 
-		this.makeGraphic('sheep-sprite');
+		this.loadGraphic('sheep-sprite');
 	}
 
 	override public function update():Void {
