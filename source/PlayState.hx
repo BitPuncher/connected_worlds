@@ -13,17 +13,28 @@ import flixel.util.FlxMath;
 class PlayState extends FlxState
 {
 	private var player:Player;
+	private var level:Level;
 
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
 	override public function create():Void
 	{
+
+		// level init
+		level = new Level();
+		level.x = 10;
+		level.y = 10;
+
+
+		// player init
 		player = new Player();
 
-		player.x = 10;
-		player.y = 10;
+		player.x = 40;
+		player.y = 40;
 
+		// adding things
+		add(level);
 		add(player);
 
 		super.create();
@@ -43,7 +54,11 @@ class PlayState extends FlxState
 	 */
 	override public function update():Void
 	{
-	    player.update();
+	  player.update();
+
+	  // Collisions
+	  FlxG.collide(level, player);
+
 		super.update();
 	}	
 }

@@ -29,7 +29,10 @@
 	
 	<set name="BUILD_DIR" value="export" />
 	<classpath name="source" />
-	<assets path="assets" />
+	<assets path="assets">
+		<!-- images -->
+		<image path="images/stage-sprite.png" id="stage-sprite" />
+	</assets>
 	
 	<!--------------------------------LIBRARIES------------------------------------->
 
