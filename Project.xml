@@ -33,9 +33,7 @@
 		<!-- images -->
 		<image path="images/stage-sprite.png" id="stage-sprite" />
 		<image path="images/sheep.png" id="sheep-sprite" />
-		<image path="images/player-down-animated.png" id="assets/images/player-down-animated.png" />
-		<image path="images/player-side-animated.png" id="assets/images/player-side-animated.png" />
-		<image path="images/player-up-animated.png" id="assets/images/player-up-animated.png" />
+		<image path="images/player-animated.png" id="assets/images/player-animated.png" />
 	</assets>
 	
 	<!--------------------------------LIBRARIES------------------------------------->

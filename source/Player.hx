@@ -16,9 +16,10 @@ class Player extends FlxSprite
 	{  
 		super();
 
-		this.loadGraphic(AssetPaths.player_side_animated__png, true, 10, 10);
-		animation.add("glowing", [0,1,2,3,4], 3);
-		animation.play("glowing");
+		this.loadGraphic(AssetPaths.player_animated__png, true, 10, 10);
+		animation.add("down", [0,1,2,3,4], 3);
+		animation.add("side", [5,6,7,8,9], 3);
+		animation.add("up", [10,11,12,13,14], 3);
 
 		this.maxVelocity.x = 70;
 		this.maxVelocity.y = 70;
@@ -100,10 +101,10 @@ class Player extends FlxSprite
 
 	private function changeSprite(facing:Int):Void {
 		switch(facing) {
-			case FlxObject.DOWN: loadGraphic(AssetPaths.player_down_animated__png, true, 10, 10);
-			case FlxObject.UP: loadGraphic(AssetPaths.player_up_animated__png, true, 10, 10);
-			case FlxObject.LEFT: loadGraphic(AssetPaths.player_side_animated__png, true, 10, 10); flipX = true;
-			case FlxObject.RIGHT: loadGraphic(AssetPaths.player_side_animated__png, true, 10, 10); flipX = false;
+			case FlxObject.DOWN: animation.play("down");
+			case FlxObject.UP: animation.play("up");
+			case FlxObject.LEFT: animation.play("side"); flipX = true;
+			case FlxObject.RIGHT: animation.play("side"); flipX = false;
 		}
 		animation.play("glowing");
 	}
