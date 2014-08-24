@@ -13,8 +13,15 @@ class Sheep extends Enemy {
 	{
 		super(xPos, yPos);
 
-		// this.x = xPos;
-		// this.y = yPos;
+		loadGraphic(AssetPaths.sheep__png, true, 8, 8);
+		animation.add("up-idle", [8, 9, 8, 10], 2);
+		animation.add("up-move", [8,11], 2);
+		animation.add("down-idle", [1,1,1,1,1,3], 6);
+		animation.add("down-move", [1,2], 2);
+		animation.add("side-idle", [4,4,4,4,4,7], 6);
+		animation.add("side-move", [4,5,6,5], 4);
+
+		state = [null, "move"];
 
 		direction = 1;
 
@@ -26,12 +33,16 @@ class Sheep extends Enemy {
 		moveTimer = new FlxTimer();
 
 		// this.loadGraphic('sheep-sprite');
-		this.loadRotatedGraphic('sheep-sprite', 4);
+		// this.loadRotatedGraphic('sheep-sprite', 4);
 	}
 
 	override public function update():Void {
 		super.update();
-		
+		setState();
+
+		if(stateChanged()) {
+			updateSprite(this.facing, state[1]);
+		}
 	}
 
 	override public function destroy():Void {
@@ -53,28 +64,28 @@ class Sheep extends Enemy {
 		{
 			this.acceleration.y = -this.maxVelocity.y * 8;
 			this.facing = FlxObject.UP;
-			this.angle = 180;
+			// animation.play("up-move");
 		}
 		if (direction == 1)
 		{
 			this.acceleration.x = this.maxVelocity.x * 8;
 			this.facing = FlxObject.RIGHT;
-			this.angle = 270;
+			// animation.play("side-move");
+			this.flipX = true;
 		}
 		if (direction == 2)
 		{
 			this.acceleration.y = this.maxVelocity.y * 8;
 			this.facing = FlxObject.DOWN;
-			this.angle = 0;
+			// animation.play("down-move");
 		}
 		if (direction == 3)
 		{
 			this.acceleration.x = -this.maxVelocity.x * 8;
 			this.facing = FlxObject.LEFT;
-			this.angle = 90;
+			// animation.play("side-move");
+			this.flipX = false;
 		}
-
-		
 
 	}
 
@@ -86,5 +97,39 @@ class Sheep extends Enemy {
 		this.velocity.y = 0;
 
 		this.behaviorTimer.start(FlxRandom.floatRanged(2, 4), behavior, 1);
+	}
+
+	private function updateSprite(facing:Int, state:String):Void {
+		if (state == "moving") {
+			switch (facing) {
+				case FlxObject.UP: animation.play("up-move");
+				case FlxObject.DOWN: animation.play("down-move");
+				case FlxObject.RIGHT: animation.play("side-move");
+				case FlxObject.LEFT: animation.play("side-move");
+			}
+		}
+		else {
+			switch (facing) {
+				case FlxObject.UP: animation.play("up-idle");
+				case FlxObject.DOWN: animation.play("down-idle");
+				case FlxObject.RIGHT: animation.play("side-idle");
+				case FlxObject.LEFT: animation.play("side-idle");
+			}
+		}
+	}
+
+	private function setState():Void {
+		state[0] = state[1];
+
+		if (this.velocity.x != 0 || this.velocity.y != 0) {
+			state[1] = "moving";
+		}
+		else {
+			state[1] = "idle";
+		}
+	}
+
+	private function stateChanged():Bool {
+		return state[0] != state[1] || previousFacing != facing;
 	}
 }

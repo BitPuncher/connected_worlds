@@ -8,6 +8,8 @@ class Enemy extends FlxSprite
 	private var behaviorTimer:FlxTimer;
 	private var time:Int;
 	private var walkSpeed:Int;
+	private var previousFacing:Int;
+	private var state:Array<String>;
 
 	override public function new(xPos:Int, yPos:Int):Void {
 		super();
@@ -18,6 +20,8 @@ class Enemy extends FlxSprite
 		time = 2;
 		walkSpeed = 60;
 		this.health = 100;
+
+		state = [];
 
 		this.maxVelocity.x = walkSpeed;
 		this.maxVelocity.y = walkSpeed;

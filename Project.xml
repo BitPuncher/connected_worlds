@@ -32,7 +32,7 @@
 	<assets path="assets">
 		<!-- images -->
 		<image path="images/stage-sprite.png" id="stage-sprite" />
-		<image path="images/sheep.png" id="sheep-sprite" />
+		<image path="images/sheep.png" id="assets/images/sheep.png" />
 		<image path="images/player-animated.png" id="assets/images/player-animated.png" />
 	</assets>
 	
