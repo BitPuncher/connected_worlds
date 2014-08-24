@@ -1,6 +1,7 @@
 package; 
 
 import flixel.*;
+import flixel.animation.*;
 import flixel.util.*;
 import flixel.addons.weapon.*;
 
@@ -8,17 +9,16 @@ class Player extends FlxSprite
 {
 	public var weapon:FlxWeapon;
 	private var facingConversion:Map<Int, Int>;
+	private var previousFacing:Int;
 
 	//Player's Constructor
 	override public function new():Void
 	{  
 		super();
 
-
-		this.loadRotatedGraphic('player-down-animated', true, 10, 10);
-
-		//x = X;
-		//y = Y;
+		this.loadGraphic('player-down-animated', true, 10, 10);
+		animation.add("glowing", [0,1,2,3,4], 3);
+		animation.play("glowing");
 
 		this.maxVelocity.x = 70;
 		this.maxVelocity.y = 70;
@@ -47,30 +47,9 @@ class Player extends FlxSprite
 		this.acceleration.x = 0;
 		this.acceleration.y = 0;
 
-		if (FlxG.keys.pressed.LEFT)
-		{
-			this.acceleration.x = -this.maxVelocity.x * 8;
-			this.facing = FlxObject.LEFT;
-		}
-		if (FlxG.keys.pressed.RIGHT)
-		{
-			this.acceleration.x = this.maxVelocity.x * 8;
-			this.facing = FlxObject.RIGHT;
-		}
-		if (FlxG.keys.pressed.UP)
-		{
-			this.acceleration.y = -this.maxVelocity.y * 8;
-			this.facing = FlxObject.UP;
-		}
-		if (FlxG.keys.pressed.DOWN)
-		{
-			this.acceleration.y = this.maxVelocity.y * 8;
-			this.facing = FlxObject.DOWN;
-		}
-		if (FlxG.keys.pressed.C)
-		{
-			weapon.setBulletDirection(facingConversion[this.facing], weapon.bulletSpeed);
-			weapon.fire();
+		inputControl();
+		if (previousFacing != facing) {
+			changeSprite(facing);
 		}
 
 		super.update();
@@ -85,6 +64,47 @@ class Player extends FlxSprite
 	override public function kill()
 	{
 		super.kill();
+	}
+
+	private function inputControl():Void {
+		if (FlxG.keys.pressed.LEFT)
+		{
+			this.acceleration.x = -this.maxVelocity.x * 8;
+			previousFacing = this.facing;
+			this.facing = FlxObject.LEFT;
+		}
+		if (FlxG.keys.pressed.RIGHT)
+		{
+			this.acceleration.x = this.maxVelocity.x * 8;
+			previousFacing = this.facing;
+			this.facing = FlxObject.RIGHT;
+		}
+		if (FlxG.keys.pressed.UP)
+		{
+			this.acceleration.y = -this.maxVelocity.y * 8;
+			previousFacing = this.facing;
+			this.facing = FlxObject.UP;
+		}
+		if (FlxG.keys.pressed.DOWN)
+		{
+			this.acceleration.y = this.maxVelocity.y * 8;
+			previousFacing = this.facing;
+			this.facing = FlxObject.DOWN;
+		}
+		if (FlxG.keys.pressed.C)
+		{
+			weapon.setBulletDirection(facingConversion[this.facing], weapon.bulletSpeed);
+			weapon.fire();
+		}
+	}
+
+	private function changeSprite(facing:Int):Void {
+		switch(facing) {
+			case FlxObject.DOWN: loadGraphic(AssetPaths.player_down_animated__png);
+			case FlxObject.UP: loadGraphic(AssetPaths.player_up_animated__png);
+			case FlxObject.LEFT: loadGraphic(AssetPaths.player_side_animated__png); flipX = true;
+			case FlxObject.RIGHT: loadGraphic(AssetPaths.player_side_animated__png); flipX = false;
+		}
 	}
 
 }
