@@ -40,6 +40,10 @@ class PlayState extends FlxState
 		// enemies init
 		enemyGroup = new FlxGroup();
 		enemyGroup.add(new Sheep(100, 100));
+		enemyGroup.add(new Sheep(200, 150));
+		enemyGroup.add(new Sheep(130, 210));
+		enemyGroup.add(new Sheep(50, 270));
+		enemyGroup.add(new Sheep(300, 140));
 
 		// adding things
 		add(level);
