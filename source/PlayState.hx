@@ -3,6 +3,7 @@ package;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import flixel.FlxObject;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
@@ -36,6 +37,7 @@ class PlayState extends FlxState
 		// adding things
 		add(level);
 		add(player);
+		add(player.weapon.group);
 
 		super.create();
 	}
@@ -58,7 +60,13 @@ class PlayState extends FlxState
 
 	  // Collisions
 	  FlxG.collide(level, player);
+	  FlxG.collide(player.weapon.group, level, killBullet);
 
 		super.update();
+	}
+
+	private function killBullet(bullet:FlxObject, object:FlxObject):Void
+	{
+		bullet.kill();
 	}	
 }

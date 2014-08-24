@@ -2,11 +2,12 @@ package;
 
 import flixel.*;
 import flixel.util.*;
-import flixel.addons.weapon.FlxWeapon;
+import flixel.addons.weapon.*;
 
 class Player extends FlxSprite
 {
-	private var weapon:FlxWeapon;
+	public var weapon:FlxWeapon;
+	private var facingConversion:Map<Int, Int>;
 
 	//Player's Constructor
 	override public function new():Void
@@ -19,14 +20,24 @@ class Player extends FlxSprite
 		//x = X;
 		//y = Y;
 
-		this.maxVelocity.x = 120;
-		this.maxVelocity.y = 120;
+		this.maxVelocity.x = 70;
+		this.maxVelocity.y = 70;
 		this.facing = FlxObject.RIGHT;
 		this.drag.x = 100;
 		this.drag.y = 100;
 
-		weapon = new FlxWeapon("Gun");
+		weapon = new FlxWeapon("Gun", this);
 
+		weapon.makePixelBullet(10);
+		weapon.setBulletLifeSpan(0);
+		weapon.setFireRate(250);
+		weapon.setBulletSpeed(250);
+
+		facingConversion = new Map();
+		facingConversion.set(FlxObject.DOWN, FlxWeapon.BULLET_DOWN);
+		facingConversion.set(FlxObject.RIGHT, FlxWeapon.BULLET_RIGHT);
+		facingConversion.set(FlxObject.LEFT, FlxWeapon.BULLET_LEFT);
+		facingConversion.set(FlxObject.UP, FlxWeapon.BULLET_UP);
 		
 	}
 
@@ -54,6 +65,11 @@ class Player extends FlxSprite
 		{
 			this.acceleration.y = this.maxVelocity.y * 8;
 			this.facing = FlxObject.DOWN;
+		}
+		if (FlxG.keys.pressed.C)
+		{
+			weapon.setBulletDirection(facingConversion[this.facing], weapon.bulletSpeed);
+			weapon.fire();
 		}
 
 		super.update();
