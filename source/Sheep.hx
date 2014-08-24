@@ -74,6 +74,8 @@ class Sheep extends Enemy {
 			this.angle = 90;
 		}
 
+		this.behaviorTimer.start(FlxRandom.intRanged(2, 4), behavior, 1);
+
 	}
 
 	public function endMove(timer:FlxTimer):Void

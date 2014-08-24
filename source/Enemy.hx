@@ -21,7 +21,7 @@ class Enemy extends FlxSprite
 		this.maxVelocity.x = walkSpeed;
 		this.maxVelocity.y = walkSpeed;
 
-		behaviorTimer = new FlxTimer(time, behavior, 0);
+		behaviorTimer = new FlxTimer(time, behavior, 1);
 	}
 
 	override public function update():Void {
