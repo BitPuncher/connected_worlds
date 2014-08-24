@@ -2,3 +2,5 @@ export/*
 
 assets/music/*
 assets/sounds/*
+
+.DS_Store
