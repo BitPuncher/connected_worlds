@@ -17,6 +17,7 @@ class PlayState extends FlxState
 	private var player:Player;
 	private var level:Level;
 	private var enemyGroup:FlxGroup;
+	private var musicOn:Bool;
 
 	/**
 	 * Function that is called up when to state is created to set it up. 
@@ -52,6 +53,7 @@ class PlayState extends FlxState
 		add(enemyGroup);
 
 		FlxG.sound.playMusic(AssetPaths.forest_of_heads__mp3, 5, true);
+		musicOn = true;
 
 		super.create();
 	}
@@ -79,6 +81,19 @@ class PlayState extends FlxState
 	  FlxG.collide(enemyGroup, enemyGroup);
 	  FlxG.collide(player.weapon.group, level, killBullet);
 	  FlxG.collide(player.weapon.group, enemyGroup, enemyHit);
+
+		if (FlxG.keys.justPressed.M && musicOn)
+		{
+			FlxG.sound.pause();
+			musicOn = false;
+		}
+		else if (FlxG.keys.justPressed.M)
+		{
+			FlxG.sound.resume();
+			musicOn = true;
+
+		}
+
 
 		super.update();
 	}
