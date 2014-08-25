@@ -35,6 +35,7 @@
 		<image path="images/sheep.png" id="assets/images/sheep.png" />
 		<image path="images/player-animated.png" id="assets/images/player-animated.png" />
 		<music path="music/forest_of_heads.mp3" id="assets/music/forest_of_heads.mp3" />
+		<sounds path="sounds/shot.wav" id="assets/sounds/shot.wav" />
 	</assets>
 	
 	<!--------------------------------LIBRARIES------------------------------------->

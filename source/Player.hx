@@ -97,6 +97,10 @@ class Player extends FlxSprite
 			weapon.setBulletDirection(facingConversion[this.facing], weapon.bulletSpeed);
 			weapon.fire();
 		}
+		if (FlxG.keys.justPressed.C)
+		{
+			FlxG.sound.play(AssetPaths.shot__wav, 1, false);
+		}
 	}
 
 	private function changeSprite(facing:Int):Void {
