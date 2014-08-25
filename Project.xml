@@ -24,7 +24,7 @@
 	
 	<!--Mobile-specific-->
 	<window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" />
-	
+
 	<!--------------------------------PATHS SETTINGS-------------------------------->
 	
 	<set name="BUILD_DIR" value="export" />
@@ -34,6 +34,7 @@
 		<image path="images/stage-sprite.png" id="stage-sprite" />
 		<image path="images/sheep.png" id="assets/images/sheep.png" />
 		<image path="images/player-animated.png" id="assets/images/player-animated.png" />
+		<music path="music/forest_of_heads.mp3" id="assets/music/forest_of_heads.mp3" />
 	</assets>
 	
 	<!--------------------------------LIBRARIES------------------------------------->

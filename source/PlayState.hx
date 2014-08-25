@@ -51,6 +51,8 @@ class PlayState extends FlxState
 		add(player.weapon.group);
 		add(enemyGroup);
 
+		FlxG.sound.playMusic(AssetPaths.forest_of_heads__mp3, 5, true);
+
 		super.create();
 	}
 	
