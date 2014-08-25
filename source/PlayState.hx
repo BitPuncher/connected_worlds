@@ -22,9 +22,8 @@ class PlayState extends FlxState
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
-	override public function create():Void
+	override public function create(?oldGroup:FlxGroup = null):Void
 	{
-
 		// level init
 		level = new Level();
 		level.x = 10;
@@ -45,6 +44,12 @@ class PlayState extends FlxState
 		enemyGroup.add(new Sheep(130, 210));
 		enemyGroup.add(new Sheep(50, 270));
 		enemyGroup.add(new Sheep(300, 140));
+
+		// rolling over enemies
+		if (oldGroup != null)
+		{
+			oldGroup.forEach(transfer);
+		}
 
 		// adding things
 		add(level);
@@ -107,5 +112,12 @@ class PlayState extends FlxState
 	{
 		bullet.kill();
 		object.hurt(20);	
+	}
+
+	private function tranfer(oldEnemy:Enemy)
+	{
+		oldEnemy.y = (level.height / 2) + level.y;
+		oldEnemy.x = (level.width / 2) + level.x;
+		enemyGroup.add(oldEnemy);
 	}
 }
