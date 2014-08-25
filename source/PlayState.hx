@@ -8,6 +8,7 @@ import flixel.FlxBasic;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
+import flixel.util.FlxColor;
 import flixel.group.FlxGroup;
 
 /**
@@ -19,6 +20,8 @@ class PlayState extends FlxState
 	private var level:Level;
 	private var enemyGroup:FlxGroup;
 	private var musicOn:Bool;
+	private var rifts:FlxGroup;
+	private var riftedObjects:FlxGroup;
 
 	/**
 	 * Function that is called up when to state is created to set it up. 
@@ -52,11 +55,16 @@ class PlayState extends FlxState
 		// 	oldGroup.forEachOfType(Enemy, transfer);
 		// }
 
+		// rifts init
+		rifts = new FlxGroup();
+		riftedObjects = new FlxGroup();
+
 		// adding things
 		add(level);
 		add(player);
 		add(player.weapon.group);
 		add(enemyGroup);
+		add(rifts);
 
 		FlxG.sound.playMusic(AssetPaths.forest_of_heads__mp3, 5, true);
 		musicOn = true;
@@ -88,6 +96,9 @@ class PlayState extends FlxState
 	  FlxG.collide(player.weapon.group, level, killBullet);
 	  FlxG.collide(player.weapon.group, enemyGroup, enemyHit);
 
+	  FlxG.collide(player, rifts, transportPlayer);
+	  FlxG.collide(enemyGroup, rifts, transportEnemy);
+
 		if (FlxG.keys.justPressed.M && musicOn)
 		{
 			FlxG.sound.pause();
@@ -100,6 +111,9 @@ class PlayState extends FlxState
 
 		}
 
+	  if (enemyGroup.countLiving() < 2) {
+	  	levelTransition();
+	  }
 
 		super.update();
 	}
@@ -122,4 +136,24 @@ class PlayState extends FlxState
 	// 	oldEnemy.x = (level.width / 2) + level.x;
 	// 	enemyGroup.add(oldEnemy);
 	// }
+
+	private function levelTransition() {
+		var blackHole:FlxSprite = new FlxSprite((level.width / 2) + level.x - 10, (level.height / 2) + level.y - 10);
+		blackHole.makeGraphic(20, 20, FlxColor.PURPLE);
+		blackHole.angularVelocity = 45;
+
+		rifts.add(blackHole);
+	}
+
+	private function transportEnemy(enemy:FlxObject, rift:FlxObject):Void {
+		riftedObjects.add(enemy);
+		enemyGroup.remove(enemy);
+	}
+
+	private function transportPlayer(player:FlxObject, rift:FlxObject):Void {
+		remove(player);
+		riftedObjects.add(player);
+
+		// FlxG.switchState(PlayState);
+	}
 }
