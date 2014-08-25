@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.FlxObject;
+import flixel.FlxBasic;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
@@ -22,7 +23,7 @@ class PlayState extends FlxState
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
-	override public function create(?oldGroup:FlxGroup = null):Void
+	override public function create():Void
 	{
 		// level init
 		level = new Level();
@@ -46,10 +47,10 @@ class PlayState extends FlxState
 		enemyGroup.add(new Sheep(300, 140));
 
 		// rolling over enemies
-		if (oldGroup != null)
-		{
-			oldGroup.forEach(transfer);
-		}
+		// if (oldGroup != null)
+		// {
+		// 	oldGroup.forEachOfType(Enemy, transfer);
+		// }
 
 		// adding things
 		add(level);
@@ -114,10 +115,11 @@ class PlayState extends FlxState
 		object.hurt(20);	
 	}
 
-	private function tranfer(oldEnemy:Enemy)
-	{
-		oldEnemy.y = (level.height / 2) + level.y;
-		oldEnemy.x = (level.width / 2) + level.x;
-		enemyGroup.add(oldEnemy);
-	}
+	// method to roll over enemies
+	// private function transfer(oldEnemy:Enemy)
+	// {
+	// 	oldEnemy.y = (level.height / 2) + level.y;
+	// 	oldEnemy.x = (level.width / 2) + level.x;
+	// 	enemyGroup.add(oldEnemy);
+	// }
 }
